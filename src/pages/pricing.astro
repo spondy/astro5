@@ -1,0 +1,213 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Prices from '~/components/widgets/Pricing.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { Icon } from 'astro-icon/components';
+import { textSpanContainsPosition } from 'typescript';
+
+const metadata = {
+  title: 'Membership',
+};
+---
+
+<Layout metadata={metadata}>
+
+  <!-- Pricing Widget ******************* -->
+
+  <Prices
+  id=prices
+  tagline="Membership"
+  title="Choose the perfect option for your goals"
+    subtitle="Only pay for what you need"
+    prices={[
+      {
+        title: 'day pass',
+        subtitle: 'Pay day to day with no commitment',
+        price: 20,
+        period: 'per day',
+        items: [
+          {
+            description: 'Use of most Artifactory facilities',
+          },
+          {
+            description: 'Some project restrictions',
+            tip: 'Day pass attendees are unable to work on <a href="#faq" class="underline text-neutral-100 hover:text-primary">dangerous projects</a> or vehicle/van fit outs'
+          },
+          {
+            description: 'Pay by EFTPOS on the day',
+          },
+          {
+            description: 'No commitment',
+          },
+        ],
+        callToAction: {
+          targetBlank: false,
+          text: 'Plan your first visit',
+          href: '/first_visit',
+        },
+      },
+      {
+        title: 'standard',
+        subtitle: 'Optimal choice for most users',
+        price: 75,
+        period: 'Per Month',
+        items: [
+          {
+            description: 'Full use of Artifactory facilities',
+          },
+          {
+            description: 'Very few project restrictions',
+            tip: 'Vehicle fit outs require an <a href="#faq" class="underline text-neutral-100 hover:text-primary">application process</a>'
+          },
+          {
+            description: '24/7 Access',
+            tip: 'Subject to <a href="#faq" class="underline text-neutral-100 hover:text-primary">eligibility criteria</a> and payment of a bond',
+          },
+          {
+            description: 'Personal storage locker',
+          },
+          {
+            description: 'Discounted tool usage fees',
+          },
+          {
+            description: 'Free access to events',
+          },
+        ],
+        callToAction: {
+          targetBlank: true,
+          text: 'Get started',
+          href: 'https://artifactory.tidyhq.com/public/membership_levels/57b90dbb32',
+        },
+        hasRibbon: true,
+        ribbonTitle: 'popular',
+      },
+      {
+        title: 'concession',
+        subtitle: 'For students and concession holders',
+        price: 45,
+        period: 'per month',
+        items: [
+          {
+            description: 'All the privileges of our standard membership',
+          },
+          {
+            description: 'For students and concession card holders',
+          },
+        ],
+        callToAction: {
+          targetBlank: true,
+          text: 'Get started',
+          href: 'https://artifactory.tidyhq.com/public/membership_levels/53401b970f',
+        },
+      },
+    ]}
+  />
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    tagline="Why sign up?"
+    title="Discover the advantages of becoming an Artifactory member"
+    columns={2}
+    items={[
+      {
+        title: '24/7 Access (with a key bond)',
+        description: 'As a member you can apply for 24/7 access so you can use the Artifactory at your own pace.',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Personal storage locker',
+        description: 'Monthly members are entitled (subject to availability) to an onsite storage locker to keep their materials and belongings in so there is no need to transport your project home every day.',
+        icon: 'tabler:shield-lock',
+      },
+      {
+        title: 'Regular events',
+        description: 'With multiple regular weekly events, the Artifactory is not just a makerspace, but also a social hub and community.',
+        icon: 'tabler:calendar',
+      },
+      {
+        title: 'Free events',
+        description: 'Free access to Artifactory events that normally have a door charge.',
+        icon: 'tabler:walk',
+      },
+      {
+        title: 'Discounted tool usage',
+        description: 'Heavily reduced rates for tools that carry material and usage fees, such as our laser cutters and 3D printers.',
+        icon: 'tabler:chevrons-down',
+      },
+      {
+        title: 'Support your local maker community',
+        description: 'As a charity and not-for-profit every dollar helps when it comes to maintaining and expanding the facilities we provide for the community.',
+        icon: 'tabler:heart-handshake',
+      },
+    ]}
+    classes={{ container: 'max-w-5xl' }}
+  />
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="Pricing FAQs"
+    id="faq"
+    columns={1}
+    items={[
+      {
+        title: 'What are the requirements to get a 24/7 key?',
+        description:
+          'Many aspects of our workshop work on the honour system. Once you have demonstrated that you are a responsible member of our community you can apply for 24/7 access. <a target"_blank" href="https://perart.io/247" class="underline text-neutral-800 dark:text-neutral-100 hover:text-primary dark:hover:text-primary">You can read the full requirements on our wiki</a>.',
+      },
+      {
+        title: 'Can I fit out my vehicle for camping or living?',
+        description:
+          'You will need to apply to our team before fitting out vehicle in our workshop. Applicants must have held their current Artifactory membership for at least six months and already be approved for 24/7 access. This includes cars, campers, trailers, etc.',
+      },
+      {
+        title: 'What payment methods do you accept?',
+        description:
+          'We accept credit card payments through TidyHQ, our payment platform. Alternatively we also accept payments via by bank transfer. We are unable to accept cash for memberships or purchases within the workshop.',
+      },
+      {
+        title: 'Can anyone become a member?',
+        description:
+          'Yes! Everyone is welcome at the Artifactory and we accept all applications.',
+      },
+      {
+        title: 'What if I need to cancel my membership?',
+        description:
+          'While we will be sad to see you go, all you need to do is send us an email and we will cancel your membership at the end of your current period.',
+      },
+      {
+        title: 'Can I switch between membership types?',
+        description:
+          'Yes you can, just let us know by email and we will be able to move you to your desired membership.',
+      },
+      {
+        title: 'Are there any hidden fees beyond the displayed cost?',
+        description:
+          'No, the membership cost is all inclusive. A small number of our larger tools carry a nominal material and usage fee, such as our laser cutters and 3D printers, to cover the cost of replacing consumables.',
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    title="Ready to join our community?"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Become a member',
+        href: '#prices',
+        icon: 'tabler:users',
+      },
+      {
+        variant: 'secondary',
+        text: 'Plan your first visit',
+        href: '/first_visit',
+      },
+    ]}
+  />
+  
+</Layout>
